@@ -1,0 +1,30 @@
+ls -li file1.txt:
+      
+ln file1.txt file2.txt
+
+1. The indove values of both txt files are the same.
+2. The contents of both files are the same.
+
+echo "David is a donkey" >> file2.txt
+
+3. The contents of both files are the same after editing file2.txt
+
+rm file1.txt
+
+4. File 2 still exists
+
+strace rm file2.txt
+
+5. unlinkat(AT_FDCWD, "file2.txt", 0) is the system call used to remove file2.txt
+
+ls -li file3.txt file4.txt
+   
+6. The inode values are differente for file3.txt and file4.txt
+
+echo "Kuba is a Booba" >> file4.txt
+
+7. Content of file 3 was also altered
+
+rm file3.txt
+
+file4.txt exists but is a dead link and can't be accessed or edited.
